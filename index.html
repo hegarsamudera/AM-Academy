@@ -72,6 +72,9 @@ a{color:inherit;}
   background:rgba(226,73,73,0.12);color:var(--brass);
   border-radius:var(--radius-sm);font-weight:600;transform:translateX(0);
 }
+a.nav-item-ext{text-decoration:none;}
+.nav-item-ext .ext-ic{margin-left:auto;color:var(--ink-faint);font-size:12px;}
+.nav-item-ext:hover .ext-ic{color:var(--brass);}
 .nav-num{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);width:16px;flex-shrink:0;}
 .nav-item.active .nav-num{color:var(--brass);}
 .nav-check{
@@ -433,6 +436,95 @@ details.lamp summary .tag-num{font-family:'IBM Plex Mono',monospace;font-size:10
 .search-hit:last-child{border-bottom:none;}
 .search-hit:hover{color:var(--brass);background:var(--surface-2);}
 .search-hit b{color:var(--ink);}
+
+/* ============ BOS LIO CHATBOT ============ */
+#boslio-fab{
+  position:fixed;right:24px;bottom:24px;z-index:100;
+  display:flex;align-items:center;gap:9px;
+  background:var(--brass-solid);color:#fff;border:none;border-radius:999px;
+  padding:13px 20px 13px 14px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.35);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:14px;
+  transition:transform .15s,box-shadow .15s;
+}
+#boslio-fab:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.4);}
+#boslio-fab.hide{display:none;}
+.boslio-fab-icon{font-size:20px;line-height:1;}
+#boslio-panel{
+  position:fixed;right:24px;bottom:24px;z-index:101;
+  width:380px;max-width:calc(100vw - 32px);height:min(560px, calc(100vh - 48px));
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);
+  display:none;flex-direction:column;overflow:hidden;
+}
+#boslio-panel.open{display:flex;}
+#boslio-header{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 16px;background:var(--surface-2);border-bottom:1px solid var(--line);flex-shrink:0;
+}
+#boslio-header-title{display:flex;align-items:center;gap:10px;}
+.boslio-avatar{
+  width:34px;height:34px;border-radius:50%;background:var(--brass-solid);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.boslio-name{font-family:'Fraunces',serif;font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3;}
+.boslio-sub{font-size:11px;color:var(--ink-faint);}
+#boslio-close{
+  background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:16px;
+  width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;
+}
+#boslio-close:hover{background:var(--surface);color:var(--ink);}
+#boslio-messages{
+  flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;
+}
+.boslio-msg{max-width:86%;font-size:13px;line-height:1.55;padding:10px 13px;border-radius:12px;white-space:pre-wrap;}
+.boslio-msg.bot{
+  align-self:flex-start;background:var(--surface-2);color:var(--ink-dim);
+  border:1px solid var(--line);border-bottom-left-radius:3px;
+}
+.boslio-msg.user{
+  align-self:flex-end;background:var(--brass-solid);color:#fff;border-bottom-right-radius:3px;
+}
+.boslio-msg-src{
+  margin-top:8px;display:inline-flex;align-items:center;gap:5px;
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--brass);
+  cursor:pointer;border:1px dashed var(--brass);border-radius:20px;padding:4px 10px;
+  background:rgba(201,161,92,.08);transition:background .15s;
+}
+.boslio-msg-src:hover{background:rgba(201,161,92,.18);}
+.boslio-typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;border-bottom-left-radius:3px;}
+.boslio-typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);animation:boslio-bounce 1.1s infinite ease-in-out;}
+.boslio-typing span:nth-child(2){animation-delay:.15s;}
+.boslio-typing span:nth-child(3){animation-delay:.3s;}
+@keyframes boslio-bounce{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-4px);opacity:1;}}
+#boslio-suggest{
+  display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px;flex-shrink:0;
+}
+#boslio-suggest button{
+  background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);
+  border-radius:20px;padding:6px 12px;font-size:11.5px;cursor:pointer;transition:border-color .15s,color .15s;
+}
+#boslio-suggest button:hover{border-color:var(--brass);color:var(--brass);}
+#boslio-form{
+  display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--surface-2);flex-shrink:0;
+}
+#boslio-input{
+  flex:1;background:var(--bg);border:1px solid var(--line);border-radius:20px;
+  padding:10px 15px;color:var(--ink);font-size:13px;font-family:'Inter',sans-serif;
+}
+#boslio-input:focus{outline:none;border-color:var(--brass);}
+#boslio-send{
+  width:36px;height:36px;border-radius:50%;border:none;background:var(--brass-solid);color:#fff;
+  cursor:pointer;flex-shrink:0;font-size:14px;display:flex;align-items:center;justify-content:center;
+  transition:transform .15s;
+}
+#boslio-send:hover{transform:scale(1.06);}
+@media(max-width:520px){
+  #boslio-panel{right:12px;left:12px;bottom:12px;width:auto;height:min(72vh, 560px);}
+  #boslio-fab{right:16px;bottom:16px;}
+  .boslio-fab-label{display:none;}
+  #boslio-fab{padding:14px;}
+}
 </style>
 </head>
 <body>
@@ -472,13 +564,19 @@ details.lamp summary .tag-num{font-family:'IBM Plex Mono',monospace;font-size:10
     </div>
 
     <div class="nav-group">
+      <div class="nav-label">Tools AM</div>
+      <a class="nav-item nav-item-ext" href="https://script.google.com/a/macros/travelio.com/s/AKfycbzksGMRCkPHAiGXxfNRhvyXPdgdjVe1usskZD3xqy4HP4Z4JsMAW_ObYb_rhcOs_0l1Xw/exec" target="_blank" rel="noopener"><span class="nav-num">14</span> Cek Eligibility Gedung <span class="ext-ic">↗</span></a>
+      <a class="nav-item nav-item-ext" href="https://datastudio.google.com/u/0/reporting/b58bbca5-ca4a-4020-80b4-20a038bf548f/page/p_70cqw2uuud" target="_blank" rel="noopener"><span class="nav-num">15</span> Dashboard Performa Gedung <span class="ext-ic">↗</span></a>
+    </div>
+
+    <div class="nav-group">
       <div class="nav-label">Kalkulator</div>
-      <div class="nav-item" data-view="simulator"><span class="nav-num">14</span> Simulasi Pendapatan Owner</div>
+      <div class="nav-item" data-view="simulator"><span class="nav-num">16</span> Simulasi Pendapatan Owner</div>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Evaluasi</div>
-      <div class="nav-item" data-view="final"><span class="nav-num">15</span> Final Assessment</div>
+      <div class="nav-item" data-view="final"><span class="nav-num">17</span> Final Assessment</div>
     </div>
 
     <div class="nav-group" id="search-wrap">
@@ -791,6 +889,25 @@ details.lamp summary .tag-num{font-family:'IBM Plex Mono',monospace;font-size:10
     </section>
 
   </main>
+</div>
+
+<!-- BOS LIO CHATBOT WIDGET -->
+<button id="boslio-fab" aria-label="Tanya Bos Lio">
+  <span class="boslio-fab-icon">🦁</span>
+  <span class="boslio-fab-label">Tanya Bos Lio</span>
+</button>
+
+<div id="boslio-panel">
+  <div id="boslio-header">
+    <div id="boslio-header-title"><span class="boslio-avatar">🦁</span><div><div class="boslio-name">Bos Lio</div><div class="boslio-sub">Asisten AM · Travelio Academy</div></div></div>
+    <button id="boslio-close" aria-label="Tutup">✕</button>
+  </div>
+  <div id="boslio-messages"></div>
+  <div id="boslio-suggest"></div>
+  <form id="boslio-form">
+    <input id="boslio-input" type="text" placeholder="Tanya soal skema, SOP, glosarium..." autocomplete="off">
+    <button type="submit" id="boslio-send" aria-label="Kirim">➤</button>
+  </form>
 </div>
 
 <script>
@@ -2213,7 +2330,7 @@ function showView(name){
   window.scrollTo(0,0);
 }
 
-document.querySelectorAll('.nav-item').forEach(item=>{
+document.querySelectorAll('.nav-item[data-view]').forEach(item=>{
   item.addEventListener('click', ()=>{
     const view = item.dataset.view;
     if(view==='mod'){ openModule(item.dataset.mod); }
@@ -2236,6 +2353,245 @@ initSimulator();
 renderFinalQuiz();
 SEARCH_INDEX = buildSearchIndex();
 document.getElementById('search-input').addEventListener('input', (e)=> runSearch(e.target.value));
+
+/* =========================================================
+   BOS LIO CHATBOT — mesin pencari pintar berbasis isi HTML ini
+   (bukan LLM eksternal — supaya aman jalan sebagai static site
+   di GitHub Pages tanpa perlu simpan API key)
+   ========================================================= */
+const BOSLIO_STOPWORDS = new Set(["yang","untuk","dengan","dari","atau","dan","ke","di","ini","itu","apa",
+  "apakah","gimana","bagaimana","kalau","jika","saya","kamu","gue","lo","aku","nya","ada","adalah","bisa",
+  "akan","juga","saja","aja","pada","dalam","kah","ya","dong","sih","deh","tuh","per","harus","perlu","kena",
+  "biar","supaya","jadi","tolong","min","gan","masih","lagi","udah","sudah","belum","sama","kok",
+  "gak","ga","enggak","tidak","the","a","an","is","are","siapa","berapa","kapan","dimana","kenapa","mengapa",
+  "gimana","kok","dong","gitu","apaan","gmn","knp","brp","yg","nih","tuh","banget","bgt","emang","memang",
+  "travelio","owner","unit","pemilik"]);
+
+function boslioTokenize(s){
+  return (String(s||'').toLowerCase().match(/[a-z0-9]+/g)||[]).filter(w=>w.length>1 && !BOSLIO_STOPWORDS.has(w));
+}
+const BOSLIO_ALIASES = {
+  fbo:"furnished owner", fbt:"furnished travelio", jkp:"jaminan kinerja pemasaran",
+  semi:"semi furnished", unf:"unfurnished", sf:"semi furnished",
+  am:"acquisition manager", ipl:"iuran pengelolaan lingkungan service charge",
+  bm:"building management", ho:"hand over serah terima", ttd:"tanda tangan",
+  wo:"work order maintenance", sla:"service level agreement",
+};
+function boslioExpandQuery(q){
+  const words = q.toLowerCase().split(/\s+/);
+  return words.map(w=>{
+    const clean = w.replace(/[^a-z0-9]/g,'');
+    return BOSLIO_ALIASES[clean] ? (w + ' ' + BOSLIO_ALIASES[clean]) : w;
+  }).join(' ');
+}
+function boslioStrip(html){
+  return String(html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+}
+
+function buildBosLioKB(){
+  let kb = [];
+  MOD_ORDER.forEach(id=>{
+    const c = CONTRACTS[id];
+    Object.entries(c.tabs).forEach(([tabName, html])=>{
+      kb.push({type:'content', mod:id, view:'mod', modName:c.name, title:tabName, text:boslioStrip(html), weight:1});
+    });
+    (c.objections||[]).forEach(o=>{
+      kb.push({type:'qa', mod:id, view:'mod', modName:c.name, title:o.q.replace(/"/g,''), text:o.a, weight:2.4});
+    });
+  });
+  if(typeof GLOSSARY!=='undefined') GLOSSARY.forEach(g=>
+    kb.push({type:'glossary', view:'glossary', modName:'Glosarium', title:g.t, text:g.d, weight:1.6}));
+  if(typeof RED_FLAGS!=='undefined') RED_FLAGS.forEach(f=>
+    kb.push({type:'redflag', view:'redflags', modName:'Red Flags — '+f.mod, title:f.flag, text:f.why, weight:1.6}));
+  if(typeof SOP_TOPICS!=='undefined') SOP_TOPICS.forEach(s=>
+    kb.push({type:'sop', view:s.view, modName:s.cat, title:s.t, text:s.d, weight:1.6}));
+  if(typeof STANDARD_UNIT!=='undefined') Object.values(STANDARD_UNIT).forEach(u=>{
+    u.groups.forEach(g=>
+      kb.push({type:'standar', view:'standarisasi', modName:'Standarisasi '+u.label, title:g.room, text:g.items.join(', '), weight:1.1}));
+  });
+  if(typeof LAMPIRAN_DATA!=='undefined') LAMPIRAN_DATA.forEach(l=>
+    kb.push({type:'lampiran', view:'lampiran', modName:'Lampiran & Template Surat', title:'Lampiran '+l.n+' — '+l.t, text:boslioStrip(l.body), weight:1.1}));
+  if(typeof WORKFLOW_LEGEND!=='undefined') WORKFLOW_LEGEND.forEach(w=>
+    kb.push({type:'workflow', view:'workflow', modName:'Alur Akuisisi', title:w.n+'. '+w.t, text:w.d, weight:1.2}));
+  if(typeof CMP_ROWS!=='undefined' && typeof CMP_NAMES!=='undefined' && typeof CMP_ORDER!=='undefined'){
+    CMP_ROWS.forEach(r=>{
+      const [label, vals] = r;
+      const text = CMP_ORDER.map(id => vals[id] ? `${CMP_NAMES[id]}: ${vals[id]}` : null).filter(Boolean).join(' | ');
+      kb.push({type:'compare', view:'compare', modName:'Perbandingan Kontrak', title:label, text, weight:1.3});
+    });
+  }
+  // FAQ Owner — akan otomatis ke-index begitu array FAQ_OWNER ditambahkan ke file ini
+  if(typeof FAQ_OWNER!=='undefined') FAQ_OWNER.forEach(f=>
+    kb.push({type:'faq', view:'faq', modName:'FAQ Owner', title:f.q, text:f.a, weight:2.6}));
+  return kb;
+}
+let BOSLIO_KB = [];
+
+const BOSLIO_SCHEME_PATTERNS = [
+  {id:'fbo', re:/\bfbo\b|furnished\s+by\s+owner/i},
+  {id:'fbt', re:/\bfbt\b|furnished\s+by\s+travelio/i},
+  {id:'semi', re:/\bsemi\b|semi\s*furnished/i},
+  {id:'unf', re:/\bunf\b|unfurnished/i},
+  {id:'jkp', re:/\bjkp\b|jaminan\s+kinerja/i},
+];
+function boslioSchemeCompare(rawQuery){
+  if(typeof CMP_ROWS==='undefined' || typeof CMP_NAMES==='undefined') return null;
+  const found = [];
+  BOSLIO_SCHEME_PATTERNS.forEach(p=>{ if(p.re.test(rawQuery) && !found.includes(p.id)) found.push(p.id); });
+  if(found.length < 2) return null;
+  const keyRows = ["Informasi Kerjasama","Durasi Kontrak","Sharing Commission"];
+  let lines = [`Perbandingan singkat ${found.map(id=>CMP_NAMES[id]).join(' vs ')}:`];
+  CMP_ROWS.forEach(r=>{
+    const [label, vals] = r;
+    if(!keyRows.some(k=>label.toLowerCase().includes(k.toLowerCase()))) return;
+    const parts = found.map(id => vals[id] ? `${CMP_NAMES[id]}: ${vals[id]}` : null).filter(Boolean);
+    if(parts.length) lines.push(`• ${label} — ${parts.join(' | ')}`);
+  });
+  lines.push('Detail lengkap semua kriteria ada di halaman Perbandingan Kontrak.');
+  return {text: lines.join('\n'), src:{mod:null, view:'compare', modName:'Perbandingan Kontrak', title:''}};
+}
+
+function boslioAnswer(query){
+  const cmpResult = boslioSchemeCompare(query);
+  if(cmpResult) return cmpResult;
+
+  const expanded = boslioExpandQuery(query);
+  const qTokens = boslioTokenize(expanded);
+  if(qTokens.length===0){
+    return {text:"Coba ketik pertanyaannya agak lebih jelas ya, biar aku bisa cariin jawabannya.", src:null};
+  }
+  const ql = query.toLowerCase();
+  let scored = BOSLIO_KB.map(item=>{
+    const titleTokens = boslioTokenize(item.title);
+    const textTokens = boslioTokenize(item.text);
+    let score = 0;
+    qTokens.forEach(qt=>{
+      if(titleTokens.includes(qt)) score += 3*item.weight;
+      if(textTokens.includes(qt)) score += 1*item.weight;
+    });
+    if(item.title.toLowerCase().includes(ql)) score += 4;
+    return {item, score};
+  }).filter(s=>s.score>0).sort((a,b)=>b.score-a.score);
+
+  if(scored.length===0 || scored[0].score < 2.2){
+    return {text:"Wah kalau itu di luar cakupan aku nih 🙏 Aku cuma paham soal isi Travelio Academy ini — skema kontrak, SOP, glosarium, red flags, standarisasi unit, dan tools AM. Coba tanya seputar itu ya.", src:null};
+  }
+
+  const top = scored[0].item;
+  let text = (top.type==='qa' || top.type==='faq') ? top.text
+    : (top.text.length > 340 ? top.text.slice(0,340).replace(/\s+\S*$/,'') + '…' : top.text);
+  return {text, src:top};
+}
+
+// Isi URL Worker kamu di sini setelah deploy (lihat boslio-worker/README.md).
+// Kosongkan ("") kalau belum di-deploy — Bos Lio otomatis pakai sistem
+// pencarian lokal sebagai fallback selama ini kosong atau gagal diakses.
+const BOSLIO_API_URL = "https://tight-bush-2736.hegarsamudera.workers.dev/chat";
+
+function boslioBuildKbText(){
+  return BOSLIO_KB.map(item => `[${item.modName}] ${item.title}\n${item.text}`).join('\n\n');
+}
+
+async function boslioGetReply(query){
+  if(BOSLIO_API_URL){
+    try{
+      const priorMsgs = boslioHistory.slice(0, -1)
+        .filter(m=>m.role==='user'||m.role==='bot')
+        .map(m=>({role: m.role==='bot'?'assistant':'user', content:m.text}));
+      const controller = new AbortController();
+      const timeoutId = setTimeout(()=>controller.abort(), 15000);
+      const res = await fetch(BOSLIO_API_URL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ message: query, history: priorMsgs, kb: boslioBuildKbText() }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      if(res.ok){
+        const data = await res.json();
+        if(data.reply) return {text:data.reply, src:null};
+      }
+    } catch(e){
+      console.log('Bos Lio API tidak terjangkau, pakai fallback lokal:', e.message);
+    }
+  }
+  return boslioAnswer(query);
+}
+
+const BOSLIO_GREETING = "Halo, aku Bos Lio 🦁 — bisa bantu jawab seputar isi Travelio Academy ini: skema kontrak, SOP, glosarium, red flags, standarisasi unit, sampai tools AM. Tanya aja apa yang bikin bingung.";
+const BOSLIO_SUGGESTIONS = [
+  "Bedanya FBO sama FBT apa?",
+  "Berapa lama SOP verifikasi owner?",
+  "Apa itu Jaminan Kinerja Pemasaran?",
+  "Barang apa aja yang wajib di-take out owner?",
+];
+
+let boslioHistory = [];
+function boslioRenderMessages(){
+  const box = document.getElementById('boslio-messages');
+  box.innerHTML = boslioHistory.map(m=>{
+    if(m.role==='bot'){
+      const srcBtn = m.src ? `<div class="boslio-msg-src" data-mod="${m.src.mod||''}" data-view="${m.src.view||''}">📎 ${m.src.modName}${m.src.title?(' — '+m.src.title):''}</div>` : '';
+      return `<div class="boslio-msg bot">${m.text}${srcBtn}</div>`;
+    }
+    return `<div class="boslio-msg user">${m.text}</div>`;
+  }).join('');
+  box.querySelectorAll('.boslio-msg-src').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const mod = el.dataset.mod, view = el.dataset.view;
+      if(mod){ openModule(mod); } else if(view){ showView(view); }
+    });
+  });
+  box.scrollTop = box.scrollHeight;
+}
+function boslioRenderSuggestions(){
+  const box = document.getElementById('boslio-suggest');
+  box.innerHTML = BOSLIO_SUGGESTIONS.map(s=>`<button type="button">${s}</button>`).join('');
+  box.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ boslioSend(btn.textContent); });
+  });
+}
+async function boslioSend(text){
+  text = text.trim();
+  if(!text) return;
+  boslioHistory.push({role:'user', text});
+  boslioRenderMessages();
+  document.getElementById('boslio-input').value = '';
+  const box = document.getElementById('boslio-messages');
+  const typingEl = document.createElement('div');
+  typingEl.className = 'boslio-typing';
+  typingEl.innerHTML = '<span></span><span></span><span></span>';
+  box.appendChild(typingEl);
+  box.scrollTop = box.scrollHeight;
+
+  const minDelay = new Promise(r=>setTimeout(r, 380));
+  const [res] = await Promise.all([boslioGetReply(text), minDelay]);
+
+  typingEl.remove();
+  boslioHistory.push({role:'bot', text:res.text, src:res.src||null});
+  boslioRenderMessages();
+}
+function boslioInit(){
+  BOSLIO_KB = buildBosLioKB();
+  boslioHistory = [{role:'bot', text:BOSLIO_GREETING, src:null}];
+  boslioRenderMessages();
+  boslioRenderSuggestions();
+  document.getElementById('boslio-fab').addEventListener('click', ()=>{
+    document.getElementById('boslio-panel').classList.add('open');
+    document.getElementById('boslio-fab').classList.add('hide');
+    document.getElementById('boslio-input').focus();
+  });
+  document.getElementById('boslio-close').addEventListener('click', ()=>{
+    document.getElementById('boslio-panel').classList.remove('open');
+    document.getElementById('boslio-fab').classList.remove('hide');
+  });
+  document.getElementById('boslio-form').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    boslioSend(document.getElementById('boslio-input').value);
+  });
+}
+boslioInit();
+
 </script>
 </body>
 </html>
