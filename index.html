@@ -903,7 +903,7 @@ details.lamp summary .tag-num{font-family:'IBM Plex Mono',monospace;font-size:10
     <button id="boslio-close" aria-label="Tutup">✕</button>
   </div>
   <div id="boslio-messages"></div>
-  <div id="boslio-suggest"></div>
+
   <form id="boslio-form">
     <input id="boslio-input" type="text" placeholder="Tanya soal skema, SOP, glosarium..." autocomplete="off">
     <button type="submit" id="boslio-send" aria-label="Kirim">➤</button>
@@ -2575,7 +2575,7 @@ function boslioInit(){
   BOSLIO_KB = buildBosLioKB();
   boslioHistory = [{role:'bot', text:BOSLIO_GREETING, src:null}];
   boslioRenderMessages();
-  boslioRenderSuggestions();
+  // boslioRenderSuggestions(); // dimatikan: suggested questions dihapus
   document.getElementById('boslio-fab').addEventListener('click', ()=>{
     document.getElementById('boslio-panel').classList.add('open');
     document.getElementById('boslio-fab').classList.add('hide');
