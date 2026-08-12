@@ -955,7 +955,7 @@ const CONTRACTS = {
         <ul><li><span class="warn">Rp 1.000.000</span></li><li><span class="warn">150%</span> dari pemesanan yang belum diselesaikan owner (jika ada)</li></ul></div>`,
       "Maintenance & Pemakaian Pribadi":`
         <div class="section-card"><h3><span class="ic">🔧</span>Maintenance</h3>
-        <ul><li>Perbaikan &lt; Rp 1 juta: langsung dikerjakan Travelio, dipotong dari laporan bulanan owner</li><li>Perbaikan &gt; Rp 1 juta: oleh owner atau vendor pilihan owner (bisa lewat Travelio dengan persetujuan owner dulu)</li><li>Travelio menanggung penggantian barang habis pakai sesuai standar Travelio</li><li>Jika owner tidak responsif, Travelio boleh relokasi tamu / ambil keputusan lapangan</li></ul></div>
+        <ul><li>Perbaikan &lt; Rp 1 juta: langsung dikerjakan Travelio, dipotong dari laporan bulanan owner</li><li>Perbaikan &gt; Rp 1 juta: oleh owner atau vendor pilihan owner (bisa lewat Travelio dengan persetujuan & biaya owner)</li><li>Travelio menanggung penggantian barang habis pakai sesuai standar Travelio</li><li>Jika owner tidak responsif, Travelio boleh relokasi tamu / ambil keputusan lapangan</li></ul></div>
         <div class="section-card"><h3><span class="ic">🏠</span>Penggunaan Pribadi Owner</h3>
         <p>Kuota <span class="num">5%</span> atau setara <span class="num">18 hari/tahun</span> (36 hari untuk kontrak 24 bulan). Owner tetap bayar biaya kebersihan per pemakaian. Libur Natal, Lebaran, Tahun Baru tidak termasuk kuota gratis.</p></div>`,
       "Utilitas, Asuransi & Harga":`
@@ -1036,8 +1036,9 @@ const CONTRACTS = {
         <p>Sama seperti skema lain: dibayar tanggal 10–15 bulan berikutnya. Penalti putus kontrak: <span class="warn">Rp 1 juta + 150%</span> dari booking belum selesai.</p></div>`,
       "Maintenance (Wear & Tear)":`
         <div class="section-card"><h3><span class="ic">🔧</span>Maintenance</h3>
-        <p><b>Wear and Tear</b> (aus pemakaian normal) menjadi tanggung jawab Travelio — terbatas pada elektronik yang disediakan owner, alat kebersihan, dan jasa layanan tertentu (cuci AC, pest control, cuci sofa/ranjang, isi ulang gas — hanya berlaku jika barangnya disediakan owner).</p>
-        <ul><li>Perbaikan &lt; Rp 1 juta: Travelio kerjakan, dipotong laporan bulanan</li><li>Perbaikan &gt; Rp 1 juta: owner atau vendor owner, bisa lewat Travelio dengan persetujuan</li></ul></div>
+        <p><b>Wear and Tear</b> (aus pemakaian normal, termasuk kerusakan struktural & karena usia) adalah tanggung jawab <b>owner</b> — Travelio bisa bantu kerjakan perbaikannya, tapi biaya tetap ditanggung owner.</p>
+        <ul><li>Perbaikan &lt; Rp 1 juta: Travelio kerjakan, dipotong dari laporan bulanan owner</li><li>Perbaikan &gt; Rp 1 juta: bisa dikerjakan owner/vendor owner, atau Travelio dengan persetujuan & biaya owner</li></ul>
+        <p>Travelio hanya menanggung perbaikan & penggantian <b>barang habis pakai (consumables)</b> — terbatas pada elektronik kecil yang disediakan owner, alat kebersihan, dan jasa layanan tertentu (cuci AC, pest control, cuci sofa/ranjang, isi ulang gas — hanya berlaku jika barangnya disediakan owner).</p></div>
         <div class="section-card"><h3><span class="ic">🏠</span>Penggunaan Pribadi</h3><p>Kuota 5% (36 hari) selama 24 bulan, bayar biaya kebersihan per pemakaian. Tidak berlaku gratis di Natal/Lebaran/Tahun Baru.</p></div>`,
       "Harga & Dokumen":`
         <div class="section-card"><h3><span class="ic">🤑</span>Pricing</h3>
@@ -1063,10 +1064,10 @@ const CONTRACTS = {
       {q:"Barang apa yang WAJIB dikeluarkan owner dari unit Semi Furnished?",opts:["Elektronik besar seperti AC","Alat kebersihan","Perlengkapan makan, masak, bantal, dan barang kecil lain","Kunci cadangan"],a:2,e:"Hanya barang besar & elektronik yang boleh ada. Barang kecil wajib dikosongkan."},
       {q:"Berapa lama batas waktu owner harus serah terima unit sejak bayar registrasi?",opts:["3 bulan","6 bulan","1 tahun","Tidak ada batas"],a:2,e:"Maksimal 1 tahun — lewat dari itu, biaya registrasi hangus."},
       {q:"Jenis sewa apa saja yang dilayani skema Semi Furnished?",opts:["Harian saja","Bulanan & Tahunan","Harian & Bulanan","Harian, Bulanan, Tahunan"],a:1,e:"Semi Furnished tidak melayani sewa harian, hanya bulanan dan tahunan."},
-      {q:"Siapa yang bertanggung jawab atas 'Wear and Tear'?",opts:["Owner","Tamu","Travelio","Building Management"],a:2,e:"Wear and tear (untuk barang yang disediakan owner) menjadi tanggung jawab Travelio."},
+      {q:"Siapa yang bertanggung jawab atas 'Wear and Tear'?",opts:["Owner","Tamu","Travelio","Building Management"],a:0,e:"Wear and tear (termasuk kerusakan struktural & karena usia) tetap tanggung jawab owner. Travelio hanya menanggung perbaikan & penggantian barang habis pakai (consumables)."},
     ],
     objections:[
-      {q:"\"Kenapa saya harus keluarin semua barang kecil dari unit saya?\"",a:"Ini untuk menghindari klaim yang tidak jelas soal barang hilang/rusak selama masa sewa. Barang besar dan elektronik tetap boleh ada dan masuk cakupan wear-and-tear Travelio, tapi barang kecil sulit diinventarisir sehingga jadi risiko buat kedua pihak kalau dibiarkan."},
+      {q:"\"Kenapa saya harus keluarin semua barang kecil dari unit saya?\"",a:"Ini untuk menghindari klaim yang tidak jelas soal barang hilang/rusak selama masa sewa. Barang besar dan elektronik tetap boleh ada dan masuk cakupan barang habis pakai yang perbaikan/penggantiannya ditanggung Travelio, tapi barang kecil sulit diinventarisir sehingga jadi risiko buat kedua pihak kalau dibiarkan."},
       {q:"\"Kalau saya belum sempat serah terima unit dalam setahun gimana?\"",a:"Ada batas waktu 1 tahun sejak bayar registrasi. Kalau lewat, biaya registrasi hangus — jadi sebaiknya dipastikan unitnya benar-benar siap serah terima sebelum daftar, supaya tidak rugi di biaya awal."},
       {q:"\"Kenapa gak bisa sewa harian kayak yang full furnished?\"",a:"Karena unitnya semi furnished, standar kenyamanan untuk tamu harian (yang biasanya menginap singkat) belum terpenuhi. Skema ini didesain untuk penyewa bulanan/tahunan yang biasanya bawa barang sendiri."},
       {q:"\"Insurance saya kapan mulai aktif?\"",a:"Beda dari Furnished by Owner yang aktif sejak unit live, asuransi Semi Furnished aktif sejak pemesanan pertama masuk — jadi owner tidak dikenakan premi selama unit belum ada bookingan sama sekali."},
@@ -1298,7 +1299,7 @@ const CONTRACTS = {
         <li>Jaminan dibayar per tahun dari periode live, cair di laporan bulan ke-13 sejak live, ditransfer maksimal tanggal 15 bulan berikutnya</li>
         <li>Perpanjangan kontrak minimal 12 bulan supaya jaminan tetap berlanjut — kurang dari itu, tidak dapat jaminan</li></ul></div>
         <div class="section-card"><h3><span class="ic">🔧</span>Maintenance</h3>
-        <ul><li>Perbaikan &lt; Rp 1 juta: langsung dikerjakan Travelio, dipotong dari laporan bulanan owner</li><li>Perbaikan &gt; Rp 1 juta: oleh owner atau vendor pilihan owner (bisa lewat Travelio dengan persetujuan owner dulu)</li><li>Travelio menanggung penggantian barang habis pakai sesuai standar Travelio</li><li>Jika owner tidak responsif, Travelio boleh relokasi tamu / ambil keputusan lapangan</li></ul></div>
+        <ul><li>Perbaikan &lt; Rp 1 juta: langsung dikerjakan Travelio, dipotong dari laporan bulanan owner</li><li>Perbaikan &gt; Rp 1 juta: oleh owner atau vendor pilihan owner (bisa lewat Travelio dengan persetujuan & biaya owner)</li><li>Travelio menanggung penggantian barang habis pakai sesuai standar Travelio</li><li>Jika owner tidak responsif, Travelio boleh relokasi tamu / ambil keputusan lapangan</li></ul></div>
         <div class="section-card"><h3><span class="ic">🧺</span>Barang-Barang Habis Pakai (Lampiran III)</h3>
         <ul>
         <li><b>Peralatan Elektronik:</b> penanak nasi, teko listrik, kabel rol, bohlam lampu, baterai, remote TV & AC (universal)</li>
@@ -1810,7 +1811,7 @@ const GLOSSARY = [
   {t:"KTP / NPWP", d:"Dokumen identitas wajib saat registrasi — KTP untuk owner perorangan, NPWP untuk owner berbentuk PT."},
   {t:"PPJB / AJB", d:"Perjanjian Pengikatan Jual Beli / Akta Jual Beli — dokumen bukti kepemilikan unit yang wajib dilampirkan saat registrasi."},
   {t:"Surat Kuasa Operasional", d:"Surat bermaterai yang memberi kuasa ke Travelio untuk mengoperasikan unit (check-in/out, dsb) atas nama owner."},
-  {t:"Wear and Tear", d:"Aus akibat pemakaian normal (bukan kerusakan akibat kelalaian)."},
+  {t:"Wear and Tear", d:"Aus akibat pemakaian normal (bukan kerusakan akibat kelalaian) — di semua skema furnished (kecuali Furnished by Travelio), ini tetap tanggung jawab owner; Travelio hanya menanggung perbaikan/penggantian barang habis pakai (consumables)."},
   {t:"Barang Habis Pakai / Consumable", d:"Barang kecil yang penggantiannya ditanggung Travelio (rice cooker, kabel rol, alat masak kecil, dll) — daftar lengkap ada di Lampiran III tiap T&C furnished."},
   {t:"Dynamic Pricing", d:"Skema harga yang diatur otomatis oleh Travelio berdasarkan traffic, occupancy, dan seasonal period. Alternatifnya Dynamic Pricing 'No', di mana owner tentukan harga terendah."},
   {t:"Jaminan Kinerja Pemasaran", d:"Jaminan pendapatan sewa minimum tahunan dari Travelio ke owner — kalau pendapatan riil kurang dari nilai jaminan, Travelio bayar selisihnya."},
